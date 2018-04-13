@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Cust_Silco_PYModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="SelectTimeSheetForManagerPayweek" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="manager" Type="varchar" Mode="In" />
+          <Parameter Name="payweekid" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="Cust_Silco_PYModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Cust_Silco_PYModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Cust_Silco_PYEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="SelectTimeSheetForManagerPayweek" ReturnType="Collection(Cust_Silco_PYModel.SelectTimeSheetForManagerPayweek_Result)">
+            <Parameter Name="manager" Mode="In" Type="String" />
+            <Parameter Name="payweekid" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SelectTimeSheetForManagerPayweek_Result">
+          <Property Type="Int32" Name="tmpayweekid" Nullable="false" />
+          <Property Type="String" Name="empmanager" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="tmemployee_id" Nullable="false" MaxLength="5" />
+          <Property Type="Int32" Name="tmelementid" Nullable="false" />
+          <Property Type="Int32" Name="tmtimesheetid" Nullable="false" />
+          <Property Type="String" Name="EDEmployee_ID" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="EMPFirst_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EMPLast_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="pidisplaydesc" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="TMItemCdeID" Nullable="false" />
+          <Property Type="Decimal" Name="tmhrs" Nullable="true" Precision="9" Scale="4" />
+          <Property Type="Decimal" Name="tmrate" Nullable="true" Precision="9" Scale="4" />
+          <Property Type="Decimal" Name="tmamt" Nullable="true" Precision="9" Scale="4" />
+          <Property Type="Int32" Name="TMInvoiceNumber" Nullable="true" />
+          <Property Type="Decimal" Name="TMInvoiceAmt" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="tmcustomername" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="PIItemPayRate" Nullable="true" Precision="9" Scale="4" />
+          <Property Type="Int32" Name="edpaytypeid" Nullable="true" />
+          <Property Type="String" Name="emptitle" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="PVMaxAmtValue" Nullable="true" Precision="13" Scale="4" />
+          <Property Type="Decimal" Name="PVMinAmtValue" Nullable="true" Precision="13" Scale="4" />
+          <Property Type="Decimal" Name="PVMaxHrsValue" Nullable="true" Precision="13" Scale="4" />
+          <Property Type="Decimal" Name="PVMinHrsValue" Nullable="true" Precision="13" Scale="4" />
+          <Property Type="Decimal" Name="pvroundhrs" Nullable="true" Precision="3" Scale="2" />
+          <Property Type="String" Name="pvtitle" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="pvemployee_id" Nullable="true" MaxLength="5" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Cust_Silco_PYModelStoreContainer" CdmEntityContainer="Cust_Silco_PYEntities" >
+          <FunctionImportMapping FunctionImportName="SelectTimeSheetForManagerPayweek" FunctionName="Cust_Silco_PYModel.Store.SelectTimeSheetForManagerPayweek">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Cust_Silco_PYModel.SelectTimeSheetForManagerPayweek_Result">
+                <ScalarProperty Name="tmpayweekid" ColumnName="tmpayweekid" />
+                <ScalarProperty Name="empmanager" ColumnName="empmanager" />
+                <ScalarProperty Name="tmemployee_id" ColumnName="tmemployee_id" />
+                <ScalarProperty Name="tmelementid" ColumnName="tmelementid" />
+                <ScalarProperty Name="tmtimesheetid" ColumnName="tmtimesheetid" />
+                <ScalarProperty Name="EDEmployee_ID" ColumnName="EDEmployee_ID" />
+                <ScalarProperty Name="EMPFirst_Name" ColumnName="EMPFirst_Name" />
+                <ScalarProperty Name="EMPLast_Name" ColumnName="EMPLast_Name" />
+                <ScalarProperty Name="pidisplaydesc" ColumnName="pidisplaydesc" />
+                <ScalarProperty Name="TMItemCdeID" ColumnName="TMItemCdeID" />
+                <ScalarProperty Name="tmhrs" ColumnName="tmhrs" />
+                <ScalarProperty Name="tmrate" ColumnName="tmrate" />
+                <ScalarProperty Name="tmamt" ColumnName="tmamt" />
+                <ScalarProperty Name="TMInvoiceNumber" ColumnName="TMInvoiceNumber" />
+                <ScalarProperty Name="TMInvoiceAmt" ColumnName="TMInvoiceAmt" />
+                <ScalarProperty Name="tmcustomername" ColumnName="tmcustomername" />
+                <ScalarProperty Name="PIItemPayRate" ColumnName="PIItemPayRate" />
+                <ScalarProperty Name="edpaytypeid" ColumnName="edpaytypeid" />
+                <ScalarProperty Name="emptitle" ColumnName="emptitle" />
+                <ScalarProperty Name="PVMaxAmtValue" ColumnName="PVMaxAmtValue" />
+                <ScalarProperty Name="PVMinAmtValue" ColumnName="PVMinAmtValue" />
+                <ScalarProperty Name="PVMaxHrsValue" ColumnName="PVMaxHrsValue" />
+                <ScalarProperty Name="PVMinHrsValue" ColumnName="PVMinHrsValue" />
+                <ScalarProperty Name="pvroundhrs" ColumnName="pvroundhrs" />
+                <ScalarProperty Name="pvtitle" ColumnName="pvtitle" />
+                <ScalarProperty Name="pvemployee_id" ColumnName="pvemployee_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
